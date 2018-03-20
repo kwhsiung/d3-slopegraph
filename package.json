@@ -1,0 +1,29 @@
+{
+  "name": "d3-slopegraph",
+  "version": "0.0.2-1",
+  "description": "{DESCRIPTION}",
+  "keywords": [
+    "d3",
+    "d3-module"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "build/d3-slopegraph.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/kwhsiung/d3-slopegraph",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kwhsiung/d3-slopegraph.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-slopegraph.js -- index.js",
+    "test": "tape 'test/**/*-test.js'",
+    "prepublishOnly": "npm run test && uglifyjs build/d3-slopegraph.js -c -m -o build/d3-slopegraph.min.js",
+    "postpublish": "zip -j build/d3-slopegraph.zip -- LICENSE README.md build/d3-slopegraph.js build/d3-slopegraph.min.js"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "rollup": "0.27",
+    "tape": "4",
+    "uglify-js": "^2.8.29"
+  }
+}
